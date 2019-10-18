@@ -1,0 +1,50 @@
+﻿@model GroupProject1_272.Models.WalkIn_Material
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WalkIn_Material</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Collector.Collector_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Collector.Collector_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Employee_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Employee_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Material.Material_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material.Material_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Walk_In.Material_Brought)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Walk_In.Material_Brought)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

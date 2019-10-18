@@ -1,0 +1,57 @@
+﻿@model IEnumerable<GroupProject1_272.Models.Walk_In>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Material_Brought)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remuneration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Collector.Collector_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.Employee_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Material_Brought)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remuneration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Collector.Collector_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.Employee_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WalkIn_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WalkIn_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WalkIn_ID })
+        </td>
+    </tr>
+}
+
+</table>

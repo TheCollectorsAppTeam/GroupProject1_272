@@ -1,0 +1,58 @@
+﻿@model GroupProject1_272.Models.Walk_In
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Walk_In</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Material_Brought)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material_Brought)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remuneration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remuneration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Collector.Collector_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Collector.Collector_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Employee_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Employee_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WalkIn_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

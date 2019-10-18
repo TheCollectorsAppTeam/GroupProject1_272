@@ -1,0 +1,34 @@
+﻿@model GroupProject1_272.Models.Donation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Donation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Donation_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donation_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donor.Donor_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donor.Donor_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Donation_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

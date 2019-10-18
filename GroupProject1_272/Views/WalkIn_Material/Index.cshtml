@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GroupProject1_272.Models.WalkIn_Material>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Collector.Collector_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.Employee_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Material.Material_Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Walk_In.Material_Brought)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Collector.Collector_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.Employee_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Material.Material_Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Walk_In.Material_Brought)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,1117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CollectorsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Collector">
+          <Key>
+            <PropertyRef Name="Collector_ID" />
+          </Key>
+          <Property Name="Collector_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Collector_Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Collector_Surname" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLMaterial">
+          <Key>
+            <PropertyRef Name="DLMaterial_ID" />
+          </Key>
+          <Property Name="DLMaterial_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DLMaterial_Description" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Condition" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="DL_ID" Type="int" Nullable="false" />
+          <Property Name="Material_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="Donation_ID" />
+          </Key>
+          <Property Name="Donation_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Donation_Date" Type="datetime" Nullable="false" />
+          <Property Name="Donor_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Donation_Line">
+          <Key>
+            <PropertyRef Name="DL_ID" />
+          </Key>
+          <Property Name="DL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DL_Description" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Donation_ID" Type="int" Nullable="false" />
+          <Property Name="Payment_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Donor">
+          <Key>
+            <PropertyRef Name="Donor_ID" />
+          </Key>
+          <Property Name="Donor_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Donor_Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="Gender_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee_Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Employee_Surname" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Employee_IDNumber" Type="nchar" MaxLength="13" Nullable="false" />
+          <Property Name="Employee_Email" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="Gender_ID" Type="int" Nullable="false" />
+          <Property Name="EmployeeType_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeeType">
+          <Key>
+            <PropertyRef Name="EmployeeType_ID" />
+          </Key>
+          <Property Name="EmployeeType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeType_Description" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Gender_ID" />
+          </Key>
+          <Property Name="Gender_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender_Description" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Material_ID" />
+          </Key>
+          <Property Name="Material_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material_Description" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="PricePerKilo" Type="float" Nullable="false" />
+          <Property Name="MaterialType_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Material_type">
+          <Key>
+            <PropertyRef Name="MaterialType_ID" />
+          </Key>
+          <Property Name="MaterialType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialType_Description" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Payment_ID" />
+          </Key>
+          <Property Name="Payment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount_Paid" Type="float" Nullable="false" />
+          <Property Name="Details" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_Paid" Type="datetime" Nullable="false" />
+          <Property Name="PaymentType_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment_Type">
+          <Key>
+            <PropertyRef Name="PaymentType_ID" />
+          </Key>
+          <Property Name="PaymentType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentType_Description" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Walk_In">
+          <Key>
+            <PropertyRef Name="WalkIn_ID" />
+          </Key>
+          <Property Name="WalkIn_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Material_Brought" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Remuneration" Type="float" Nullable="false" />
+          <Property Name="Collector_ID" Type="int" Nullable="false" />
+          <Property Name="Employee_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Collectors.dbo.WalkIn_Material' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WalkIn_Material">
+          <Key>
+            <PropertyRef Name="Material_ID" />
+            <PropertyRef Name="Collector_ID" />
+            <PropertyRef Name="Employee_ID" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="Material_ID" Type="int" Nullable="false" />
+          <Property Name="Collector_ID" Type="int" Nullable="false" />
+          <Property Name="Employee_ID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="WalkIn_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK_DLMaterial_Donation_Line">
+          <End Role="Donation_Line" Type="Self.Donation_Line" Multiplicity="1" />
+          <End Role="DLMaterial" Type="Self.DLMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation_Line">
+              <PropertyRef Name="DL_ID" />
+            </Principal>
+            <Dependent Role="DLMaterial">
+              <PropertyRef Name="DL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DLMaterial_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="DLMaterial" Type="Self.DLMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Material_ID" />
+            </Principal>
+            <Dependent Role="DLMaterial">
+              <PropertyRef Name="Material_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Donor">
+          <End Role="Donor" Type="Self.Donor" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donor">
+              <PropertyRef Name="Donor_ID" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="Donor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Line_Donation">
+          <End Role="Donation" Type="Self.Donation" Multiplicity="1" />
+          <End Role="Donation_Line" Type="Self.Donation_Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation">
+              <PropertyRef Name="Donation_ID" />
+            </Principal>
+            <Dependent Role="Donation_Line">
+              <PropertyRef Name="Donation_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Line_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="Donation_Line" Type="Self.Donation_Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Payment_ID" />
+            </Principal>
+            <Dependent Role="Donation_Line">
+              <PropertyRef Name="Payment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donor_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Donor" Type="Self.Donor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="Donor">
+              <PropertyRef Name="Gender_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donor_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Donor" Type="Self.Donor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Donor">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_EmployeeType">
+          <End Role="EmployeeType" Type="Self.EmployeeType" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeType">
+              <PropertyRef Name="EmployeeType_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Gender_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Material_type">
+          <End Role="Material_type" Type="Self.Material_type" Multiplicity="1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_type">
+              <PropertyRef Name="MaterialType_ID" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="MaterialType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Payment_Type">
+          <End Role="Payment_Type" Type="Self.Payment_Type" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment_Type">
+              <PropertyRef Name="PaymentType_ID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="PaymentType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Walk_In_Collector">
+          <End Role="Collector" Type="Self.Collector" Multiplicity="1" />
+          <End Role="Walk_In" Type="Self.Walk_In" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Collector">
+              <PropertyRef Name="Collector_ID" />
+            </Principal>
+            <Dependent Role="Walk_In">
+              <PropertyRef Name="Collector_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Walk_In_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Walk_In" Type="Self.Walk_In" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="Walk_In">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalkIn_Material_Collector">
+          <End Role="Collector" Type="Self.Collector" Multiplicity="1" />
+          <End Role="WalkIn_Material" Type="Self.WalkIn_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Collector">
+              <PropertyRef Name="Collector_ID" />
+            </Principal>
+            <Dependent Role="WalkIn_Material">
+              <PropertyRef Name="Collector_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalkIn_Material_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="WalkIn_Material" Type="Self.WalkIn_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="WalkIn_Material">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalkIn_Material_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="WalkIn_Material" Type="Self.WalkIn_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Material_ID" />
+            </Principal>
+            <Dependent Role="WalkIn_Material">
+              <PropertyRef Name="Material_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalkIn_Material_Walk_In">
+          <End Role="Walk_In" Type="Self.Walk_In" Multiplicity="0..1" />
+          <End Role="WalkIn_Material" Type="Self.WalkIn_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Walk_In">
+              <PropertyRef Name="WalkIn_ID" />
+            </Principal>
+            <Dependent Role="WalkIn_Material">
+              <PropertyRef Name="WalkIn_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CollectorsModelStoreContainer">
+          <EntitySet Name="Collector" EntityType="Self.Collector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLMaterial" EntityType="Self.DLMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donation_Line" EntityType="Self.Donation_Line" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donor" EntityType="Self.Donor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeType" EntityType="Self.EmployeeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material_type" EntityType="Self.Material_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment_Type" EntityType="Self.Payment_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Walk_In" EntityType="Self.Walk_In" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WalkIn_Material" EntityType="Self.WalkIn_Material" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WalkIn_Material].[Material_ID] AS [Material_ID], 
+    [WalkIn_Material].[Collector_ID] AS [Collector_ID], 
+    [WalkIn_Material].[Employee_ID] AS [Employee_ID], 
+    [WalkIn_Material].[Quantity] AS [Quantity], 
+    [WalkIn_Material].[WalkIn_ID] AS [WalkIn_ID]
+    FROM [dbo].[WalkIn_Material] AS [WalkIn_Material]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DLMaterial_Donation_Line" Association="Self.FK_DLMaterial_Donation_Line">
+            <End Role="Donation_Line" EntitySet="Donation_Line" />
+            <End Role="DLMaterial" EntitySet="DLMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DLMaterial_Material" Association="Self.FK_DLMaterial_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="DLMaterial" EntitySet="DLMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Donor" Association="Self.FK_Donation_Donor">
+            <End Role="Donor" EntitySet="Donor" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Line_Donation" Association="Self.FK_Donation_Line_Donation">
+            <End Role="Donation" EntitySet="Donation" />
+            <End Role="Donation_Line" EntitySet="Donation_Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Line_Payment" Association="Self.FK_Donation_Line_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Donation_Line" EntitySet="Donation_Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donor_Gender" Association="Self.FK_Donor_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Donor" EntitySet="Donor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donor_User" Association="Self.FK_Donor_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Donor" EntitySet="Donor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_EmployeeType" Association="Self.FK_Employee_EmployeeType">
+            <End Role="EmployeeType" EntitySet="EmployeeType" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Material_type" Association="Self.FK_Material_Material_type">
+            <End Role="Material_type" EntitySet="Material_type" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Payment_Type" Association="Self.FK_Payment_Payment_Type">
+            <End Role="Payment_Type" EntitySet="Payment_Type" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Walk_In_Collector" Association="Self.FK_Walk_In_Collector">
+            <End Role="Collector" EntitySet="Collector" />
+            <End Role="Walk_In" EntitySet="Walk_In" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Walk_In_Employee" Association="Self.FK_Walk_In_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Walk_In" EntitySet="Walk_In" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalkIn_Material_Collector" Association="Self.FK_WalkIn_Material_Collector">
+            <End Role="Collector" EntitySet="Collector" />
+            <End Role="WalkIn_Material" EntitySet="WalkIn_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalkIn_Material_Employee" Association="Self.FK_WalkIn_Material_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="WalkIn_Material" EntitySet="WalkIn_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalkIn_Material_Material" Association="Self.FK_WalkIn_Material_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="WalkIn_Material" EntitySet="WalkIn_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalkIn_Material_Walk_In" Association="Self.FK_WalkIn_Material_Walk_In">
+            <End Role="Walk_In" EntitySet="Walk_In" />
+            <End Role="WalkIn_Material" EntitySet="WalkIn_Material" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CollectorsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Collector">
+          <Key>
+            <PropertyRef Name="Collector_ID" />
+          </Key>
+          <Property Name="Collector_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Collector_Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Collector_Surname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Walk_In" Relationship="Self.FK_Walk_In_Collector" FromRole="Collector" ToRole="Walk_In" />
+          <NavigationProperty Name="WalkIn_Material" Relationship="Self.FK_WalkIn_Material_Collector" FromRole="Collector" ToRole="WalkIn_Material" />
+        </EntityType>
+        <EntityType Name="DLMaterial">
+          <Key>
+            <PropertyRef Name="DLMaterial_ID" />
+          </Key>
+          <Property Name="DLMaterial_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DLMaterial_Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Condition" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DL_ID" Type="Int32" Nullable="false" />
+          <Property Name="Material_ID" Type="Int32" />
+          <NavigationProperty Name="Donation_Line" Relationship="Self.FK_DLMaterial_Donation_Line" FromRole="DLMaterial" ToRole="Donation_Line" />
+          <NavigationProperty Name="Material" Relationship="Self.FK_DLMaterial_Material" FromRole="DLMaterial" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="Donation_ID" />
+          </Key>
+          <Property Name="Donation_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Donation_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Donor_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Donor" Relationship="Self.FK_Donation_Donor" FromRole="Donation" ToRole="Donor" />
+          <NavigationProperty Name="Donation_Line" Relationship="Self.FK_Donation_Line_Donation" FromRole="Donation" ToRole="Donation_Line" />
+        </EntityType>
+        <EntityType Name="Donation_Line">
+          <Key>
+            <PropertyRef Name="DL_ID" />
+          </Key>
+          <Property Name="DL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DL_Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Donation_ID" Type="Int32" Nullable="false" />
+          <Property Name="Payment_ID" Type="Int32" />
+          <NavigationProperty Name="DLMaterials" Relationship="Self.FK_DLMaterial_Donation_Line" FromRole="Donation_Line" ToRole="DLMaterial" />
+          <NavigationProperty Name="Donation" Relationship="Self.FK_Donation_Line_Donation" FromRole="Donation_Line" ToRole="Donation" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_Donation_Line_Payment" FromRole="Donation_Line" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Donor">
+          <Key>
+            <PropertyRef Name="Donor_ID" />
+          </Key>
+          <Property Name="Donor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Donor_Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="Gender_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Donations" Relationship="Self.FK_Donation_Donor" FromRole="Donor" ToRole="Donation" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Donor_Gender" FromRole="Donor" ToRole="Gender" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Donor_User" FromRole="Donor" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Employee_Surname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Employee_IDNumber" Type="String" MaxLength="13" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Employee_Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="Gender_ID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeType_ID" Type="Int32" />
+          <NavigationProperty Name="EmployeeType" Relationship="Self.FK_Employee_EmployeeType" FromRole="Employee" ToRole="EmployeeType" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Employee_Gender" FromRole="Employee" ToRole="Gender" />
+          <NavigationProperty Name="Walk_In" Relationship="Self.FK_Walk_In_Employee" FromRole="Employee" ToRole="Walk_In" />
+          <NavigationProperty Name="WalkIn_Material" Relationship="Self.FK_WalkIn_Material_Employee" FromRole="Employee" ToRole="WalkIn_Material" />
+        </EntityType>
+        <EntityType Name="EmployeeType">
+          <Key>
+            <PropertyRef Name="EmployeeType_ID" />
+          </Key>
+          <Property Name="EmployeeType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeType_Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_EmployeeType" FromRole="EmployeeType" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Gender_ID" />
+          </Key>
+          <Property Name="Gender_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender_Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Donors" Relationship="Self.FK_Donor_Gender" FromRole="Gender" ToRole="Donor" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Gender" FromRole="Gender" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Material_ID" />
+          </Key>
+          <Property Name="Material_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Material_Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PricePerKilo" Type="Double" Nullable="false" />
+          <Property Name="MaterialType_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DLMaterials" Relationship="Self.FK_DLMaterial_Material" FromRole="Material" ToRole="DLMaterial" />
+          <NavigationProperty Name="Material_type" Relationship="Self.FK_Material_Material_type" FromRole="Material" ToRole="Material_type" />
+          <NavigationProperty Name="WalkIn_Material" Relationship="Self.FK_WalkIn_Material_Material" FromRole="Material" ToRole="WalkIn_Material" />
+        </EntityType>
+        <EntityType Name="Material_type">
+          <Key>
+            <PropertyRef Name="MaterialType_ID" />
+          </Key>
+          <Property Name="MaterialType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialType_Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="Self.FK_Material_Material_type" FromRole="Material_type" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Payment_ID" />
+          </Key>
+          <Property Name="Payment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount_Paid" Type="Double" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Date_Paid" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentType_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Donation_Line" Relationship="Self.FK_Donation_Line_Payment" FromRole="Payment" ToRole="Donation_Line" />
+          <NavigationProperty Name="Payment_Type" Relationship="Self.FK_Payment_Payment_Type" FromRole="Payment" ToRole="Payment_Type" />
+        </EntityType>
+        <EntityType Name="Payment_Type">
+          <Key>
+            <PropertyRef Name="PaymentType_ID" />
+          </Key>
+          <Property Name="PaymentType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentType_Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_Payment_Type" FromRole="Payment_Type" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Donors" Relationship="Self.FK_Donor_User" FromRole="User" ToRole="Donor" />
+        </EntityType>
+        <EntityType Name="Walk_In">
+          <Key>
+            <PropertyRef Name="WalkIn_ID" />
+          </Key>
+          <Property Name="WalkIn_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Material_Brought" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Remuneration" Type="Double" Nullable="false" />
+          <Property Name="Collector_ID" Type="Int32" Nullable="false" />
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Collector" Relationship="Self.FK_Walk_In_Collector" FromRole="Walk_In" ToRole="Collector" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Walk_In_Employee" FromRole="Walk_In" ToRole="Employee" />
+          <NavigationProperty Name="WalkIn_Material" Relationship="Self.FK_WalkIn_Material_Walk_In" FromRole="Walk_In" ToRole="WalkIn_Material" />
+        </EntityType>
+        <EntityType Name="WalkIn_Material">
+          <Key>
+            <PropertyRef Name="Material_ID" />
+            <PropertyRef Name="Collector_ID" />
+            <PropertyRef Name="Employee_ID" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="Material_ID" Type="Int32" Nullable="false" />
+          <Property Name="Collector_ID" Type="Int32" Nullable="false" />
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="WalkIn_ID" Type="Int32" />
+          <NavigationProperty Name="Collector" Relationship="Self.FK_WalkIn_Material_Collector" FromRole="WalkIn_Material" ToRole="Collector" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_WalkIn_Material_Employee" FromRole="WalkIn_Material" ToRole="Employee" />
+          <NavigationProperty Name="Material" Relationship="Self.FK_WalkIn_Material_Material" FromRole="WalkIn_Material" ToRole="Material" />
+          <NavigationProperty Name="Walk_In" Relationship="Self.FK_WalkIn_Material_Walk_In" FromRole="WalkIn_Material" ToRole="Walk_In" />
+        </EntityType>
+        <Association Name="FK_Walk_In_Collector">
+          <End Role="Collector" Type="Self.Collector" Multiplicity="1" />
+          <End Role="Walk_In" Type="Self.Walk_In" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Collector">
+              <PropertyRef Name="Collector_ID" />
+            </Principal>
+            <Dependent Role="Walk_In">
+              <PropertyRef Name="Collector_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalkIn_Material_Collector">
+          <End Role="Collector" Type="Self.Collector" Multiplicity="1" />
+          <End Role="WalkIn_Material" Type="Self.WalkIn_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Collector">
+              <PropertyRef Name="Collector_ID" />
+            </Principal>
+            <Dependent Role="WalkIn_Material">
+              <PropertyRef Name="Collector_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DLMaterial_Donation_Line">
+          <End Role="Donation_Line" Type="Self.Donation_Line" Multiplicity="1" />
+          <End Role="DLMaterial" Type="Self.DLMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation_Line">
+              <PropertyRef Name="DL_ID" />
+            </Principal>
+            <Dependent Role="DLMaterial">
+              <PropertyRef Name="DL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DLMaterial_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="DLMaterial" Type="Self.DLMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Material_ID" />
+            </Principal>
+            <Dependent Role="DLMaterial">
+              <PropertyRef Name="Material_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Donor">
+          <End Role="Donor" Type="Self.Donor" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donor">
+              <PropertyRef Name="Donor_ID" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="Donor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Line_Donation">
+          <End Role="Donation" Type="Self.Donation" Multiplicity="1" />
+          <End Role="Donation_Line" Type="Self.Donation_Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation">
+              <PropertyRef Name="Donation_ID" />
+            </Principal>
+            <Dependent Role="Donation_Line">
+              <PropertyRef Name="Donation_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Line_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="Donation_Line" Type="Self.Donation_Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Payment_ID" />
+            </Principal>
+            <Dependent Role="Donation_Line">
+              <PropertyRef Name="Payment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donor_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Donor" Type="Self.Donor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="Donor">
+              <PropertyRef Name="Gender_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donor_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Donor" Type="Self.Donor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Donor">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_EmployeeType">
+          <End Role="EmployeeType" Type="Self.EmployeeType" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeType">
+              <PropertyRef Name="EmployeeType_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Gender_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Walk_In_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Walk_In" Type="Self.Walk_In" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="Walk_In">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalkIn_Material_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="WalkIn_Material" Type="Self.WalkIn_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="WalkIn_Material">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Material_type">
+          <End Role="Material_type" Type="Self.Material_type" Multiplicity="1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_type">
+              <PropertyRef Name="MaterialType_ID" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="MaterialType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalkIn_Material_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="WalkIn_Material" Type="Self.WalkIn_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Material_ID" />
+            </Principal>
+            <Dependent Role="WalkIn_Material">
+              <PropertyRef Name="Material_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Payment_Type">
+          <End Role="Payment_Type" Type="Self.Payment_Type" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment_Type">
+              <PropertyRef Name="PaymentType_ID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="PaymentType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalkIn_Material_Walk_In">
+          <End Role="Walk_In" Type="Self.Walk_In" Multiplicity="0..1" />
+          <End Role="WalkIn_Material" Type="Self.WalkIn_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Walk_In">
+              <PropertyRef Name="WalkIn_ID" />
+            </Principal>
+            <Dependent Role="WalkIn_Material">
+              <PropertyRef Name="WalkIn_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CollectorsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Collectors" EntityType="Self.Collector" />
+          <EntitySet Name="DLMaterials" EntityType="Self.DLMaterial" />
+          <EntitySet Name="Donations" EntityType="Self.Donation" />
+          <EntitySet Name="Donation_Line" EntityType="Self.Donation_Line" />
+          <EntitySet Name="Donors" EntityType="Self.Donor" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeeTypes" EntityType="Self.EmployeeType" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="Materials" EntityType="Self.Material" />
+          <EntitySet Name="Material_type" EntityType="Self.Material_type" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Payment_Type" EntityType="Self.Payment_Type" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Walk_In" EntityType="Self.Walk_In" />
+          <EntitySet Name="WalkIn_Material" EntityType="Self.WalkIn_Material" />
+          <AssociationSet Name="FK_Walk_In_Collector" Association="Self.FK_Walk_In_Collector">
+            <End Role="Collector" EntitySet="Collectors" />
+            <End Role="Walk_In" EntitySet="Walk_In" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalkIn_Material_Collector" Association="Self.FK_WalkIn_Material_Collector">
+            <End Role="Collector" EntitySet="Collectors" />
+            <End Role="WalkIn_Material" EntitySet="WalkIn_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DLMaterial_Donation_Line" Association="Self.FK_DLMaterial_Donation_Line">
+            <End Role="Donation_Line" EntitySet="Donation_Line" />
+            <End Role="DLMaterial" EntitySet="DLMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DLMaterial_Material" Association="Self.FK_DLMaterial_Material">
+            <End Role="Material" EntitySet="Materials" />
+            <End Role="DLMaterial" EntitySet="DLMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Donor" Association="Self.FK_Donation_Donor">
+            <End Role="Donor" EntitySet="Donors" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Line_Donation" Association="Self.FK_Donation_Line_Donation">
+            <End Role="Donation" EntitySet="Donations" />
+            <End Role="Donation_Line" EntitySet="Donation_Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Line_Payment" Association="Self.FK_Donation_Line_Payment">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Donation_Line" EntitySet="Donation_Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donor_Gender" Association="Self.FK_Donor_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Donor" EntitySet="Donors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donor_User" Association="Self.FK_Donor_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Donor" EntitySet="Donors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_EmployeeType" Association="Self.FK_Employee_EmployeeType">
+            <End Role="EmployeeType" EntitySet="EmployeeTypes" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Walk_In_Employee" Association="Self.FK_Walk_In_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Walk_In" EntitySet="Walk_In" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalkIn_Material_Employee" Association="Self.FK_WalkIn_Material_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="WalkIn_Material" EntitySet="WalkIn_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Material_type" Association="Self.FK_Material_Material_type">
+            <End Role="Material_type" EntitySet="Material_type" />
+            <End Role="Material" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalkIn_Material_Material" Association="Self.FK_WalkIn_Material_Material">
+            <End Role="Material" EntitySet="Materials" />
+            <End Role="WalkIn_Material" EntitySet="WalkIn_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Payment_Type" Association="Self.FK_Payment_Payment_Type">
+            <End Role="Payment_Type" EntitySet="Payment_Type" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalkIn_Material_Walk_In" Association="Self.FK_WalkIn_Material_Walk_In">
+            <End Role="Walk_In" EntitySet="Walk_In" />
+            <End Role="WalkIn_Material" EntitySet="WalkIn_Material" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CollectorsModelStoreContainer" CdmEntityContainer="CollectorsEntities">
+          <EntitySetMapping Name="Collectors">
+            <EntityTypeMapping TypeName="CollectorsModel.Collector">
+              <MappingFragment StoreEntitySet="Collector">
+                <ScalarProperty Name="Collector_ID" ColumnName="Collector_ID" />
+                <ScalarProperty Name="Collector_Name" ColumnName="Collector_Name" />
+                <ScalarProperty Name="Collector_Surname" ColumnName="Collector_Surname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLMaterials">
+            <EntityTypeMapping TypeName="CollectorsModel.DLMaterial">
+              <MappingFragment StoreEntitySet="DLMaterial">
+                <ScalarProperty Name="DLMaterial_ID" ColumnName="DLMaterial_ID" />
+                <ScalarProperty Name="DLMaterial_Description" ColumnName="DLMaterial_Description" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="DL_ID" ColumnName="DL_ID" />
+                <ScalarProperty Name="Material_ID" ColumnName="Material_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donations">
+            <EntityTypeMapping TypeName="CollectorsModel.Donation">
+              <MappingFragment StoreEntitySet="Donation">
+                <ScalarProperty Name="Donation_ID" ColumnName="Donation_ID" />
+                <ScalarProperty Name="Donation_Date" ColumnName="Donation_Date" />
+                <ScalarProperty Name="Donor_ID" ColumnName="Donor_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donation_Line">
+            <EntityTypeMapping TypeName="CollectorsModel.Donation_Line">
+              <MappingFragment StoreEntitySet="Donation_Line">
+                <ScalarProperty Name="DL_ID" ColumnName="DL_ID" />
+                <ScalarProperty Name="DL_Description" ColumnName="DL_Description" />
+                <ScalarProperty Name="Donation_ID" ColumnName="Donation_ID" />
+                <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donors">
+            <EntityTypeMapping TypeName="CollectorsModel.Donor">
+              <MappingFragment StoreEntitySet="Donor">
+                <ScalarProperty Name="Donor_ID" ColumnName="Donor_ID" />
+                <ScalarProperty Name="Donor_Name" ColumnName="Donor_Name" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CollectorsModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="Employee_Surname" ColumnName="Employee_Surname" />
+                <ScalarProperty Name="Employee_IDNumber" ColumnName="Employee_IDNumber" />
+                <ScalarProperty Name="Employee_Email" ColumnName="Employee_Email" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+                <ScalarProperty Name="EmployeeType_ID" ColumnName="EmployeeType_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTypes">
+            <EntityTypeMapping TypeName="CollectorsModel.EmployeeType">
+              <MappingFragment StoreEntitySet="EmployeeType">
+                <ScalarProperty Name="EmployeeType_ID" ColumnName="EmployeeType_ID" />
+                <ScalarProperty Name="EmployeeType_Description" ColumnName="EmployeeType_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="CollectorsModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+                <ScalarProperty Name="Gender_Description" ColumnName="Gender_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="CollectorsModel.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="Material_ID" ColumnName="Material_ID" />
+                <ScalarProperty Name="Material_Description" ColumnName="Material_Description" />
+                <ScalarProperty Name="PricePerKilo" ColumnName="PricePerKilo" />
+                <ScalarProperty Name="MaterialType_ID" ColumnName="MaterialType_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Material_type">
+            <EntityTypeMapping TypeName="CollectorsModel.Material_type">
+              <MappingFragment StoreEntitySet="Material_type">
+                <ScalarProperty Name="MaterialType_ID" ColumnName="MaterialType_ID" />
+                <ScalarProperty Name="MaterialType_Description" ColumnName="MaterialType_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="CollectorsModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+                <ScalarProperty Name="Amount_Paid" ColumnName="Amount_Paid" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Date_Paid" ColumnName="Date_Paid" />
+                <ScalarProperty Name="PaymentType_ID" ColumnName="PaymentType_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment_Type">
+            <EntityTypeMapping TypeName="CollectorsModel.Payment_Type">
+              <MappingFragment StoreEntitySet="Payment_Type">
+                <ScalarProperty Name="PaymentType_ID" ColumnName="PaymentType_ID" />
+                <ScalarProperty Name="PaymentType_Description" ColumnName="PaymentType_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CollectorsModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CollectorsModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Walk_In">
+            <EntityTypeMapping TypeName="CollectorsModel.Walk_In">
+              <MappingFragment StoreEntitySet="Walk_In">
+                <ScalarProperty Name="WalkIn_ID" ColumnName="WalkIn_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Material_Brought" ColumnName="Material_Brought" />
+                <ScalarProperty Name="Remuneration" ColumnName="Remuneration" />
+                <ScalarProperty Name="Collector_ID" ColumnName="Collector_ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WalkIn_Material">
+            <EntityTypeMapping TypeName="CollectorsModel.WalkIn_Material">
+              <MappingFragment StoreEntitySet="WalkIn_Material">
+                <ScalarProperty Name="Material_ID" ColumnName="Material_ID" />
+                <ScalarProperty Name="Collector_ID" ColumnName="Collector_ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="WalkIn_ID" ColumnName="WalkIn_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
